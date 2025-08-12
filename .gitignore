@@ -205,3 +205,13 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Sensitive data folders in root
+/data/
+/back_up/
+/text_files/
+/plots/
+
+# Sensitive data files in root
+tokens.json
+zendesk_token.py
