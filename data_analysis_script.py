@@ -26,6 +26,8 @@ if sys.argv[1] == "tag_freq":
 
 if sys.argv[1] == "tag_pairs":
     tags = [tag for tag, _ in tag_counter.most_common(10)]
+    additional_tags = ["sent_to_github", "jira_escalated", "known_issue", "bug"]
+    tags = tags + additional_tags
     matrix, labels = tickets.build_cooccurrence(tags, ignored_tags=None)
     DataAnalysis.plot_cooccurrence_heatmap(matrix,labels)
 
