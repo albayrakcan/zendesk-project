@@ -97,5 +97,5 @@ class DataAnalysis:
                         path_effects=[pe.withStroke(linewidth=1.5, foreground="black")])
         
         plt.tight_layout()
-        plt.savefig("plots/tag_pairs_png", dpi=300)
+        plt.savefig("plots/tag_pairs", dpi=300)
         plt.show()
