@@ -13,7 +13,7 @@ ignored_tags = set(JsonUtils.load_json(ignored_tags_file))
 tag_counter = tickets.count_tags(csv_file=tag_csv_file, ignored_tags=ignored_tags)
 
 if sys.argv[1] == "top_tags":
-    DataAnalysis.tags_by_freq(tag_counter, 20)
+    DataAnalysis.tags_by_freq(tag_counter, 13,save_figure=True)
 
 if sys.argv[1] == "tag_freq":
     tags = [tag for tag, _ in tag_counter.most_common(10)]
@@ -26,9 +26,12 @@ if sys.argv[1] == "tag_freq":
 
 if sys.argv[1] == "tag_pairs":
     tags = [tag for tag, _ in tag_counter.most_common(10)]
-    additional_tags = ["sent_to_github", "jira_escalated", "known_issue", "bug"]
-    tags = tags + additional_tags
+    # additional_tags = ["sent_to_github", "jira_escalated", "known_issue", "bug"]
+    # tags = tags + additional_tags
     matrix, labels = tickets.build_cooccurrence(tags, ignored_tags=None)
-    DataAnalysis.plot_cooccurrence_heatmap(matrix,labels)
+    DataAnalysis.plot_cooccurrence_heatmap(matrix,labels,save_path="tag_pairs_test")
 
-
+if sys.argv[1] == "tag_network":
+    tags = [tag for tag, _ in tag_counter.most_common(10)]
+    matrix, labels = tickets.build_cooccurrence(tags, ignored_tags=None)
+    DataAnalysis.plot_tag_network(matrix,labels,tag_counter,show_isolates=False,save_path="tag_network_1")
