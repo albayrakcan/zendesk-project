@@ -215,3 +215,6 @@ __marimo__/
 # Sensitive data files in root
 tokens.json
 zendesk_token.py
+
+# My own notes
+TO\ DO.txt
